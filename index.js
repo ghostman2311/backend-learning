@@ -1,10 +1,14 @@
 const express = require('express')
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/user')
+const fileRoutes = require('./routes/file')
 const app = express()
 const port = 3000
+const path = require('path');
 
 require("dotenv").config();
+
+
 
 
 //connect to database
@@ -28,6 +32,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}))
 
 app.use(userRoutes);
+app.use(fileRoutes);
+
 
 app.listen(port, () => {
   console.log(`Server is live on port ${port}`)
